@@ -143,17 +143,17 @@
     <div class="game-container">
         <div class="scratch-card" id="card1">
             <div class="overlay">RASPA AQUÍ</div>
-            <div class="option-text"> Juegos de mesa 🧿 </div>
+            <div class="option-text"> Fuente de sodas con juegos de mesa 🧿 </div>
         </div>
 
         <div class="scratch-card" id="card2">
             <div class="overlay">RASPA AQUÍ</div>
-            <div class="option-text"> Cafeteria de libros 📖 </div>
+            <div class="option-text"> Cafeteria con muchos libros 📖 </div>
         </div>
 
         <div class="scratch-card" id="card3">
             <div class="overlay">RASPA AQUÍ</div>
-            <div class="option-text"> Senderimos por calvario de metepec, aver si sigue abierto 🗺️</div>
+            <div class="option-text"> Hacer senderimo por calvario de metepec, aver si sigue abierto 🗺️</div>
         </div>
     </div>
 
