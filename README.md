@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿A Dónde Vamos Hoy? ¡Raspa y Gana!</title>
+    <title>¿A Dónde Vamos Hoy? </title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -138,22 +138,22 @@
 </head>
 <body>
     <h1>¿A Dónde Vamos Hoy? ¡Raspa una Tarjeta!</h1>
-    <p class="instructions">¡Pídele a tu pareja que haga clic en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
+    <p class="instructions">¡Haga clic, señorita Mayrin, en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
 
     <div class="game-container">
         <div class="scratch-card" id="card1">
             <div class="overlay">RASPA AQUÍ</div>
-            <div class="option-text">Cena Romántica en Casa 🍷</div>
+            <div class="option-text"> Juegos de mesa 🧿 </div>
         </div>
 
         <div class="scratch-card" id="card2">
             <div class="overlay">RASPA AQUÍ</div>
-            <div class="option-text">Noche de Películas y Palomitas 🍿</div>
+            <div class="option-text"> Cafeteria de libros 📖 </div>
         </div>
 
         <div class="scratch-card" id="card3">
             <div class="overlay">RASPA AQUÍ</div>
-            <div class="option-text">Salida Sorpresa a un Lugar Nuevo 🗺️</div>
+            <div class="option-text"> Senderimos por calvario de metepec, aver si sigue abierto 🗺️</div>
         </div>
     </div>
 
