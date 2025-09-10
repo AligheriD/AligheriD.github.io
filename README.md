@@ -138,7 +138,7 @@
 </head>
 <body>
     <h1>¿A Dónde Vamos Hoy? ¡Raspa una Tarjeta!</h1>
-    <p class="instructions">¡Haga clic, señorita Mayrin, en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
+    <p class="instructions">¡Haga clic, señorita Mairyn, en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
 
     <div class="game-container">
         <div class="scratch-card" id="card1">
