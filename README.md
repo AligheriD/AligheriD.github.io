@@ -153,7 +153,7 @@
 
         <div class="scratch-card" id="card3">
             <div class="overlay">RASPA AQUÍ</div>
-            <div class="option-text"> Senderimo por calvario de metepec 🗺️</div>
+            <div class="option-text"> Senderismo por calvario de metepec 🗺️</div>
         </div>
     </div>
 
