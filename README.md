@@ -511,7 +511,7 @@
             if (confirmationStep === 1) {
                 finalMessage.textContent = '¿Quieres abrirla?';
             } else if (confirmationStep === 2) {
-                finalMessage.textContent = 'Segura que la quieres abrir';
+                finalMessage.textContent = '¿Segura que la quieres abrir?';
             } else if (confirmationStep === 3) {
                 finalMessage.textContent = '¿Estás muy segura que la quieres abrir?';
                 confirmYesBtn.textContent = 'Sí, muy segura';
@@ -535,7 +535,7 @@
             timerSection.style.display = 'none';
             finalSequence.style.display = 'block';
             finalMessage.style.display = 'block';
-            finalMessage.textContent = 'Ahora tienes que abrir esta nota.';
+            finalMessage.textContent = 'Ahora, Mairyn, tienes que abrir esta nota.';
             confirmation.style.display = 'block';
             confirmYesBtn.textContent = 'Sí';
             confirmationStep = 0;
