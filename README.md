@@ -17,8 +17,7 @@
             box-sizing: border-box;
             text-align: center;
             background: #f0f0f0;
-            /* Nueva imagen de atardecer con tonos más rojizos */
-            background-image: url('https://media.istockphoto.com/id/538449165/es/foto/hermoso-paisaje-con-nubes-sobre-el-mar-al-atardecer-toma.jpg?s=612x612&w=0&k=20&c=eCiTmgmyCdsjCLWWEmbybsAbR92iqdTp7GQ5zNa7WbQ='); 
+            background-image: url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae74?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -32,7 +31,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Capa un poco más oscura para contraste */
+            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
 
@@ -151,13 +150,13 @@
             opacity: 0;
             transform: scale(0.8);
             transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-            display: none; /* Asegura que esté oculto por defecto */
+            display: none;
         }
 
         .special-event.show {
             opacity: 1;
             transform: scale(1);
-            display: block; /* Muestra el elemento cuando se añade la clase show */
+            display: block;
         }
 
         .question-box {
@@ -190,12 +189,15 @@
             background-color: #b71c1c;
         }
 
+        #timerSection {
+            text-align: center;
+            display: none;
+        }
         #timerInstructions {
-            font-size: 1.8em; /* Tamaño más grande para las instrucciones del temporizador */
+            font-size: 1.8em;
             font-weight: bold;
             color: #d32f2f;
             margin-top: 20px;
-            display: none;
             text-shadow: 1px 1px 2px #000;
         }
         #timerContinueBtn {
@@ -208,7 +210,6 @@
             border-radius: 5px;
             transition: background-color 0.3s;
             margin-top: 20px;
-            display: none;
         }
         #timerContinueBtn:hover {
             background-color: #b71c1c;
@@ -216,11 +217,10 @@
         
         #finalMessage {
             text-align: center;
-            font-size: 2em; /* Ajustado para el flujo */
+            font-size: 2em;
             font-weight: bold;
             color: #d32f2f;
             margin-top: 40px;
-            display: none;
             text-shadow: 1px 1px 2px #000;
             transition: opacity 1s ease-in-out;
         }
@@ -248,18 +248,27 @@
         #finalProposal {
             text-align: center;
             margin-top: 40px;
-            animation: fadeIn 2s forwards; /* Animación para la propuesta final */
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         #finalProposal p {
-            font-size: 3.5em; /* Un poco más grande para la pregunta final */
+            font-size: 3.5em;
             font-weight: bold;
             color: #d32f2f;
             text-shadow: 3px 3px 6px #000;
             margin: 0;
             line-height: 1.2;
+            animation: fadeIn 2s forwards;
+        }
+        
+        .proposal-lang {
+            display: none;
+            animation: pulse 1.5s infinite;
         }
 
-        /* Efectos de decoración (más y variados) */
+        /* Efectos de decoración */
         .butterfly, .dandelion {
             position: absolute;
             font-size: 3em;
@@ -268,7 +277,7 @@
             animation: float 20s infinite linear;
             pointer-events: none;
             opacity: 0.8;
-            z-index: 1; /* Para que estén sobre el fondo pero debajo del contenido */
+            z-index: 1;
         }
         .butterfly-1 { top: 10%; left: 5%; animation-duration: 22s; }
         .butterfly-2 { top: 40%; right: 10%; animation-duration: 25s; }
@@ -279,7 +288,6 @@
         .dandelion-3 { top: 50%; left: 15%; animation-duration: 20s; transform: scale(0.7); }
         .dandelion-4 { top: 5%; right: 20%; animation-duration: 26s; transform: scale(1.1); }
 
-
         @keyframes float {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
             50% { transform: translateY(-30px) rotate(8deg); opacity: 1; }
@@ -289,7 +297,11 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.8em;
@@ -351,26 +363,25 @@
     <div class="special-event" id="specialEvent">
         <div id="questionContainer">
             <h2 id="questionTitle" style="text-align: center; color: #d32f2f;">Desafío de las 36 Preguntas</h2>
-            <p id="questionIntro" style="text-align: center;">¡EVENTO ESPECIAL! Como parte de nuestra aventura, hoy nos sumergiremos en este desafío para conocernos aún mejor. Tomen su tiempo para responder cada pregunta con honestidad. ¡Adelante!</p>
+            <p id="questionIntro" style="text-align: center;">¡Felicidades! Como parte de nuestra aventura, hoy nos sumergiremos en este desafío para conocernos aún mejor. Tomen su tiempo para responder cada pregunta con honestidad. ¡Adelante!</p>
             <div id="questionBox" class="question-box"></div>
             <div class="controls">
                 <button id="nextBtn">Comenzar</button>
             </div>
         </div>
         <div id="timerSection" style="display: none; text-align: center;">
-            <p id="timerInstructions">Ahora, mirense a los ojos por 4 minutos. Por favor, usen un temporizador aparte. y dar continuar cuando hayan acabado</p>
+            <p id="timerInstructions">Ahora, mirense a los ojos por 4 minutos. Por favor, usen un temporizador aparte. ¡Este es su momento!</p>
             <button id="timerContinueBtn">Listo, ¡Continuar!</button>
         </div>
         <div id="final-sequence" style="display: none;">
             <p id="finalMessage"></p>
             <div id="confirmation" style="display: none;">
-                <p style="font-size: 1.5em; color: #333;">¿Segura que lo quieres abrir?</p>
                 <div class="confirmation-buttons">
                     <button id="confirmYes">Sí</button>
                 </div>
             </div>
             <div id="finalProposal" style="display: none;">
-                <p>¿Quieres ser mi novia?</p>
+                <p id="proposalText"></p>
             </div>
         </div>
     </div>
@@ -391,6 +402,7 @@
         const confirmation = document.getElementById('confirmation');
         const confirmYesBtn = document.getElementById('confirmYes');
         const finalProposal = document.getElementById('finalProposal');
+        const proposalText = document.getElementById('proposalText');
 
         const questions = [
             'Suponiendo que pudiera elegir a cualquier persona del mundo, ¿a quién le gustaría invitar a cenar?',
@@ -431,7 +443,19 @@
             'Exponga un problema personal y pregúntele a su pareja cómo lo manejaría ella. Asimismo, pídale a su pareja que le diga cómo parece que usted se siente respecto del problema que eligió.'
         ];
         let currentQuestion = 0;
-        let confirmationStep = 0; // 0: "abrir esta nota", 1: "¿Segura?", 2: "Muy segura"
+        let confirmationStep = 0;
+
+        const proposalLanguages = [
+            '¿Quieres ser mi novia?',
+            'Will you be my girlfriend?',
+            'Veux-tu être ma petite amie?',
+            'Vuoi essere la mia ragazza?',
+            'Möchtest du meine Freundin sein?',
+            'Você quer ser minha namorada?',
+            'Quieres ser mi novia?'
+        ];
+        let langIndex = 0;
+        let langInterval;
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
@@ -451,11 +475,11 @@
                     card.style.pointerEvents = 'none';
                     
                     setTimeout(() => {
-                        specialEvent.style.display = 'block'; // Muestra el contenedor general
+                        specialEvent.style.display = 'block';
                         setTimeout(() => {
-                            specialEvent.classList.add('show'); // Aplica la transición de aparición
+                            specialEvent.classList.add('show');
                             questionBox.textContent = `¡Están listos! Presionen "Comenzar" para iniciar el desafío.`;
-                        }, 50); // Pequeño retraso para la transición CSS
+                        }, 50);
                     }, 1000);
                 }
             });
@@ -485,13 +509,17 @@
         confirmYesBtn.addEventListener('click', () => {
             confirmationStep++;
             if (confirmationStep === 1) {
-                finalMessage.textContent = '¿Segura que lo quieres abrir?';
-                // No mostrar "No"
+                finalMessage.textContent = '¿Quieres abrirla?';
             } else if (confirmationStep === 2) {
-                finalMessage.textContent = '¡Muy segura!';
-                confirmation.style.display = 'none'; // Oculta los botones
+                finalMessage.textContent = 'Segura que la quieres abrir';
+            } else if (confirmationStep === 3) {
+                finalMessage.textContent = '¿Estás muy segura que la quieres abrir?';
+                confirmYesBtn.textContent = 'Sí, muy segura';
+            } else if (confirmationStep === 4) {
+                confirmation.style.display = 'none';
+                finalMessage.style.display = 'none';
                 setTimeout(() => {
-                    finalProposal.style.display = 'block'; // Muestra la propuesta final
+                    startLanguageProposal();
                 }, 1000);
             }
         });
@@ -509,7 +537,17 @@
             finalMessage.style.display = 'block';
             finalMessage.textContent = 'Ahora tienes que abrir esta nota.';
             confirmation.style.display = 'block';
-            confirmYesBtn.textContent = 'Sí'; // Asegurarse de que el botón diga 'Sí'
+            confirmYesBtn.textContent = 'Sí';
+            confirmationStep = 0; // Reiniciar el contador para la nueva secuencia
+        }
+
+        function startLanguageProposal() {
+            finalProposal.style.display = 'block';
+            
+            langInterval = setInterval(() => {
+                proposalText.textContent = proposalLanguages[langIndex];
+                langIndex = (langIndex + 1) % proposalLanguages.length;
+            }, 1500);
         }
     </script>
 </body>
