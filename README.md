@@ -18,7 +18,7 @@
             text-align: center;
             background: #f0f0f0;
             /* Nueva imagen de atardecer con tonos más rojizos */
-            background-image: url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae74?q=80&w=2070&auto=format&fit=crop'); 
+            background-image: url('https://media.istockphoto.com/id/538449165/es/foto/hermoso-paisaje-con-nubes-sobre-el-mar-al-atardecer-toma.jpg?s=612x612&w=0&k=20&c=eCiTmgmyCdsjCLWWEmbybsAbR92iqdTp7GQ5zNa7WbQ='); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -351,14 +351,14 @@
     <div class="special-event" id="specialEvent">
         <div id="questionContainer">
             <h2 id="questionTitle" style="text-align: center; color: #d32f2f;">Desafío de las 36 Preguntas</h2>
-            <p id="questionIntro" style="text-align: center;">¡Felicidades! Como parte de nuestra aventura, hoy nos sumergiremos en este desafío para conocernos aún mejor. Tomen su tiempo para responder cada pregunta con honestidad. ¡Adelante!</p>
+            <p id="questionIntro" style="text-align: center;">¡EVENTO ESPECIAL! Como parte de nuestra aventura, hoy nos sumergiremos en este desafío para conocernos aún mejor. Tomen su tiempo para responder cada pregunta con honestidad. ¡Adelante!</p>
             <div id="questionBox" class="question-box"></div>
             <div class="controls">
                 <button id="nextBtn">Comenzar</button>
             </div>
         </div>
         <div id="timerSection" style="display: none; text-align: center;">
-            <p id="timerInstructions">Ahora, mirense a los ojos por 4 minutos. Por favor, usen un temporizador aparte. ¡Este es su momento!</p>
+            <p id="timerInstructions">Ahora, mirense a los ojos por 4 minutos. Por favor, usen un temporizador aparte. y dar continuar cuando hayan acabado</p>
             <button id="timerContinueBtn">Listo, ¡Continuar!</button>
         </div>
         <div id="final-sequence" style="display: none;">
