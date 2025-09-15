@@ -17,7 +17,7 @@
             box-sizing: border-box;
             text-align: center;
             background: #f0f0f0;
-            background-image: url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae74?q=80&w=2070&auto=format&fit=crop'); 
+            background-image: url('https://static.videezy.com/system/resources/thumbnails/000/039/986/original/17_024_03.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
