@@ -17,7 +17,7 @@
             box-sizing: border-box;
             text-align: center;
             background: #f0f0f0;
-            background-image: url('https://media.istockphoto.com/id/538449165/es/foto/hermoso-paisaje-con-nubes-sobre-el-mar-al-atardecer-toma.jpg?s=612x612&w=0&k=20&c=eCiTmgmyCdsjCLWWEmbybsAbR92iqdTp7GQ5zNa7WbQ='); 
+            background-image: url('https://static.videezy.com/system/resources/thumbnails/000/039/986/original/17_024_03.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -282,7 +282,7 @@
         .butterfly-1 { top: 10%; left: 5%; animation-duration: 22s; }
         .butterfly-2 { top: 40%; right: 10%; animation-duration: 25s; }
         .butterfly-3 { top: 25%; left: 30%; animation-duration: 18s; transform: scale(0.8); }
-        .butterfly-4 { bottom: 20%; right: 30%; animation-duration: 23s; transform: scale(0.9); }
+        .butterfly-4 { bottom: 15%; right: 10%; animation-duration: 23s; transform: scale(0.9); }
         .dandelion-1 { bottom: 15%; left: 20%; animation-duration: 28s; }
         .dandelion-2 { bottom: 30%; right: 25%; animation-duration: 30s; }
         .dandelion-3 { top: 50%; left: 15%; animation-duration: 20s; transform: scale(0.7); }
@@ -333,10 +333,7 @@
     <div class="butterfly butterfly-2">🦋</div>
     <div class="butterfly butterfly-3">🦋</div>
     <div class="butterfly butterfly-4">🦋</div>
-    <div class="dandelion dandelion-1">🌼</div>
-    <div class="dandelion dandelion-2">🌼</div>
-    <div class="dandelion dandelion-3">🌼</div>
-    <div class="dandelion dandelion-4">🌼</div>
+
     
     <h1>¿A Dónde Vamos Hoy? ¡Raspa una Tarjeta!</h1>
     <p class="instructions">¡Haga clic, señorita Mairyn, en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
@@ -452,7 +449,7 @@
             'Vuoi essere la mia ragazza?',
             'Möchtest du meine Freundin sein?',
             'Você quer ser minha namorada?',
-            'Quieres ser mi novia?'
+            '你愿意做我的女朋友吗？'
         ];
         let langIndex = 0;
         let langInterval;
