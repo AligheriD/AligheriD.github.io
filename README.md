@@ -1,4 +1,3 @@
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +17,8 @@
             box-sizing: border-box;
             text-align: center;
             background: #f0f0f0;
-            background-image: url('https://images.unsplash.com/photo-1518090710609-b4ed47517c2f?q=80&w=1974&auto=format&fit=crop');
+            /* Nueva imagen de atardecer con tonos más rojizos */
+            background-image: url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae74?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -32,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Capa oscura para que el texto sea legible */
+            background: rgba(0, 0, 0, 0.5); /* Capa un poco más oscura para contraste */
             z-index: -1;
         }
 
@@ -151,11 +151,13 @@
             opacity: 0;
             transform: scale(0.8);
             transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            display: none; /* Asegura que esté oculto por defecto */
         }
 
         .special-event.show {
             opacity: 1;
             transform: scale(1);
+            display: block; /* Muestra el elemento cuando se añade la clase show */
         }
 
         .question-box {
@@ -188,23 +190,38 @@
             background-color: #b71c1c;
         }
 
-        #timerDisplay {
-            font-size: 3em;
+        #timerInstructions {
+            font-size: 1.8em; /* Tamaño más grande para las instrucciones del temporizador */
             font-weight: bold;
             color: #d32f2f;
             margin-top: 20px;
             display: none;
             text-shadow: 1px 1px 2px #000;
         }
+        #timerContinueBtn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            display: none;
+        }
+        #timerContinueBtn:hover {
+            background-color: #b71c1c;
+        }
         
         #finalMessage {
             text-align: center;
-            font-size: 3em;
+            font-size: 2em; /* Ajustado para el flujo */
             font-weight: bold;
             color: #d32f2f;
             margin-top: 40px;
             display: none;
-            text-shadow: 2px 2px 4px #000;
+            text-shadow: 1px 1px 2px #000;
             transition: opacity 1s ease-in-out;
         }
         
@@ -228,7 +245,21 @@
             background-color: #45a049;
         }
         
-        /* Efectos de decoración */
+        #finalProposal {
+            text-align: center;
+            margin-top: 40px;
+            animation: fadeIn 2s forwards; /* Animación para la propuesta final */
+        }
+        #finalProposal p {
+            font-size: 3.5em; /* Un poco más grande para la pregunta final */
+            font-weight: bold;
+            color: #d32f2f;
+            text-shadow: 3px 3px 6px #000;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        /* Efectos de decoración (más y variados) */
         .butterfly, .dandelion {
             position: absolute;
             font-size: 3em;
@@ -237,24 +268,63 @@
             animation: float 20s infinite linear;
             pointer-events: none;
             opacity: 0.8;
+            z-index: 1; /* Para que estén sobre el fondo pero debajo del contenido */
         }
         .butterfly-1 { top: 10%; left: 5%; animation-duration: 22s; }
         .butterfly-2 { top: 40%; right: 10%; animation-duration: 25s; }
+        .butterfly-3 { top: 25%; left: 30%; animation-duration: 18s; transform: scale(0.8); }
+        .butterfly-4 { bottom: 20%; right: 30%; animation-duration: 23s; transform: scale(0.9); }
         .dandelion-1 { bottom: 15%; left: 20%; animation-duration: 28s; }
         .dandelion-2 { bottom: 30%; right: 25%; animation-duration: 30s; }
+        .dandelion-3 { top: 50%; left: 15%; animation-duration: 20s; transform: scale(0.7); }
+        .dandelion-4 { top: 5%; right: 20%; animation-duration: 26s; transform: scale(1.1); }
+
 
         @keyframes float {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-            50% { transform: translateY(-20px) rotate(5deg); opacity: 1; }
+            50% { transform: translateY(-30px) rotate(8deg); opacity: 1; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .scratch-card {
+                width: 200px;
+                height: 120px;
+            }
+            .option-text {
+                font-size: 1.2em;
+            }
+            .overlay {
+                font-size: 1.2em;
+            }
+            .winner-message {
+                font-size: 1.5em;
+            }
+            #timerInstructions {
+                font-size: 1.3em;
+            }
+            #finalProposal p {
+                font-size: 2.5em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="butterfly butterfly-1">🦋</div>
     <div class="butterfly butterfly-2">🦋</div>
+    <div class="butterfly butterfly-3">🦋</div>
+    <div class="butterfly butterfly-4">🦋</div>
     <div class="dandelion dandelion-1">🌼</div>
     <div class="dandelion dandelion-2">🌼</div>
+    <div class="dandelion dandelion-3">🌼</div>
+    <div class="dandelion dandelion-4">🌼</div>
     
     <h1>¿A Dónde Vamos Hoy? ¡Raspa una Tarjeta!</h1>
     <p class="instructions">¡Haga clic, señorita Mairyn, en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
@@ -287,18 +357,20 @@
                 <button id="nextBtn">Comenzar</button>
             </div>
         </div>
-        <div id="timerDisplay"></div>
+        <div id="timerSection" style="display: none; text-align: center;">
+            <p id="timerInstructions">Ahora, mirense a los ojos por 4 minutos. Por favor, usen un temporizador aparte. ¡Este es su momento!</p>
+            <button id="timerContinueBtn">Listo, ¡Continuar!</button>
+        </div>
         <div id="final-sequence" style="display: none;">
-            <p id="finalMessage" style="font-size: 2em; color: #d32f2f; margin-top: 40px; text-shadow: 1px 1px 2px #000;"></p>
+            <p id="finalMessage"></p>
             <div id="confirmation" style="display: none;">
                 <p style="font-size: 1.5em; color: #333;">¿Segura que lo quieres abrir?</p>
                 <div class="confirmation-buttons">
                     <button id="confirmYes">Sí</button>
-                    <button id="confirmNo" style="display: none;">No</button>
                 </div>
-                <div id="finalProposal" style="display: none; text-align: center; margin-top: 40px;">
-                    <p style="font-size: 3em; font-weight: bold; color: #d32f2f; text-shadow: 2px 2px 4px #000;">¿Quieres ser mi novia?</p>
-                </div>
+            </div>
+            <div id="finalProposal" style="display: none;">
+                <p>¿Quieres ser mi novia?</p>
             </div>
         </div>
     </div>
@@ -311,12 +383,13 @@
         const questionContainer = document.getElementById('questionContainer');
         const questionBox = document.getElementById('questionBox');
         const nextBtn = document.getElementById('nextBtn');
-        const timerDisplay = document.getElementById('timerDisplay');
+        const timerSection = document.getElementById('timerSection');
+        const timerInstructions = document.getElementById('timerInstructions');
+        const timerContinueBtn = document.getElementById('timerContinueBtn');
         const finalSequence = document.getElementById('final-sequence');
         const finalMessage = document.getElementById('finalMessage');
         const confirmation = document.getElementById('confirmation');
         const confirmYesBtn = document.getElementById('confirmYes');
-        const confirmNoBtn = document.getElementById('confirmNo');
         const finalProposal = document.getElementById('finalProposal');
 
         const questions = [
@@ -358,6 +431,7 @@
             'Exponga un problema personal y pregúntele a su pareja cómo lo manejaría ella. Asimismo, pídale a su pareja que le diga cómo parece que usted se siente respecto del problema que eligió.'
         ];
         let currentQuestion = 0;
+        let confirmationStep = 0; // 0: "abrir esta nota", 1: "¿Segura?", 2: "Muy segura"
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
@@ -377,11 +451,11 @@
                     card.style.pointerEvents = 'none';
                     
                     setTimeout(() => {
-                        specialEvent.style.display = 'block';
+                        specialEvent.style.display = 'block'; // Muestra el contenedor general
                         setTimeout(() => {
-                            specialEvent.classList.add('show');
+                            specialEvent.classList.add('show'); // Aplica la transición de aparición
                             questionBox.textContent = `¡Están listos! Presionen "Comenzar" para iniciar el desafío.`;
-                        }, 50); // Pequeño retraso para la transición
+                        }, 50); // Pequeño retraso para la transición CSS
                     }, 1000);
                 }
             });
@@ -396,7 +470,7 @@
                     nextBtn.textContent = '¡Mirada de 4 minutos!';
                 }
             } else {
-                startFinalSequence();
+                startTimerInstructions();
             }
         });
 
@@ -404,29 +478,38 @@
             alert('¡Ups! Ya hemos ido a esta aventura. Por favor, elige otra tarjeta.');
         });
         
-        // Lógica de confirmación final
+        timerContinueBtn.addEventListener('click', () => {
+            startFinalSequence();
+        });
+
         confirmYesBtn.addEventListener('click', () => {
-            if (finalMessage.textContent === 'Ahora tienes que abrir esta nota.') {
+            confirmationStep++;
+            if (confirmationStep === 1) {
                 finalMessage.textContent = '¿Segura que lo quieres abrir?';
-                confirmNoBtn.style.display = 'inline-block';
-            } else if (finalMessage.textContent === '¿Segura que lo quieres abrir?') {
+                // No mostrar "No"
+            } else if (confirmationStep === 2) {
                 finalMessage.textContent = '¡Muy segura!';
-                confirmation.style.display = 'none';
+                confirmation.style.display = 'none'; // Oculta los botones
                 setTimeout(() => {
-                    finalProposal.style.display = 'block';
+                    finalProposal.style.display = 'block'; // Muestra la propuesta final
                 }, 1000);
             }
         });
 
-        function startFinalSequence() {
+        function startTimerInstructions() {
             questionContainer.style.display = 'none';
+            timerSection.style.display = 'block';
+            timerInstructions.style.display = 'block';
+            timerContinueBtn.style.display = 'block';
+        }
+
+        function startFinalSequence() {
+            timerSection.style.display = 'none';
             finalSequence.style.display = 'block';
             finalMessage.style.display = 'block';
             finalMessage.textContent = 'Ahora tienes que abrir esta nota.';
-            
-            setTimeout(() => {
-                confirmation.style.display = 'block';
-            }, 1000);
+            confirmation.style.display = 'block';
+            confirmYesBtn.textContent = 'Sí'; // Asegurarse de que el botón diga 'Sí'
         }
     </script>
 </body>
