@@ -17,7 +17,7 @@
             box-sizing: border-box;
             text-align: center;
             background: #f0f0f0;
-            background-image: url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae74?q=80&w=2070&auto=format&fit=crop'); 
+            background-image: url('https://media.istockphoto.com/id/538449165/es/foto/hermoso-paisaje-con-nubes-sobre-el-mar-al-atardecer-toma.jpg?s=612x612&w=0&k=20&c=eCiTmgmyCdsjCLWWEmbybsAbR92iqdTp7GQ5zNa7WbQ='); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
