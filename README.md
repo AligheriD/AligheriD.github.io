@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿A Dónde Vamos Hoy? ¡Raspa y Gana!</title>
+    <title>¿A Dónde Vamos Hoy?</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -17,7 +17,7 @@
             box-sizing: border-box;
             text-align: center;
             background: #f0f0f0;
-            background-image: url('https://static.videezy.com/system/resources/thumbnails/000/039/986/original/17_024_03.jpg'); 
+            background-image: url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae74?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -269,7 +269,7 @@
         }
 
         /* Efectos de decoración */
-        .butterfly, .dandelion {
+        .butterfly {
             position: absolute;
             font-size: 3em;
             color: #fff;
@@ -279,14 +279,14 @@
             opacity: 0.8;
             z-index: 1;
         }
-        .butterfly-1 { top: 10%; left: 5%; animation-duration: 22s; }
-        .butterfly-2 { top: 40%; right: 10%; animation-duration: 25s; }
-        .butterfly-3 { top: 25%; left: 30%; animation-duration: 18s; transform: scale(0.8); }
-        .butterfly-4 { bottom: 15%; right: 10%; animation-duration: 23s; transform: scale(0.9); }
-        .dandelion-1 { bottom: 15%; left: 20%; animation-duration: 28s; }
-        .dandelion-2 { bottom: 30%; right: 25%; animation-duration: 30s; }
-        .dandelion-3 { top: 50%; left: 15%; animation-duration: 20s; transform: scale(0.7); }
-        .dandelion-4 { top: 5%; right: 20%; animation-duration: 26s; transform: scale(1.1); }
+        .butterfly-1 { top: 5%; left: 5%; animation-duration: 22s; }
+        .butterfly-2 { top: 5%; right: 5%; animation-duration: 25s; }
+        .butterfly-3 { bottom: 5%; left: 5%; animation-duration: 18s; transform: scale(0.8); }
+        .butterfly-4 { bottom: 5%; right: 5%; animation-duration: 23s; transform: scale(0.9); }
+        .butterfly-5 { top: 30%; left: 15%; animation-duration: 28s; }
+        .butterfly-6 { top: 30%; right: 15%; animation-duration: 30s; }
+        .butterfly-7 { bottom: 30%; left: 15%; animation-duration: 20s; transform: scale(0.7); }
+        .butterfly-8 { bottom: 30%; right: 15%; animation-duration: 26s; transform: scale(1.1); }
 
         @keyframes float {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
@@ -333,7 +333,10 @@
     <div class="butterfly butterfly-2">🦋</div>
     <div class="butterfly butterfly-3">🦋</div>
     <div class="butterfly butterfly-4">🦋</div>
-
+    <div class="butterfly butterfly-5">🦋</div>
+    <div class="butterfly butterfly-6">🦋</div>
+    <div class="butterfly butterfly-7">🦋</div>
+    <div class="butterfly butterfly-8">🦋</div>
     
     <h1>¿A Dónde Vamos Hoy? ¡Raspa una Tarjeta!</h1>
     <p class="instructions">¡Haga clic, señorita Mairyn, en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
@@ -360,14 +363,14 @@
     <div class="special-event" id="specialEvent">
         <div id="questionContainer">
             <h2 id="questionTitle" style="text-align: center; color: #d32f2f;">Desafío de las 36 Preguntas</h2>
-            <p id="questionIntro" style="text-align: center;">¡Felicidades! Como parte de nuestra aventura, hoy nos sumergiremos en este desafío para conocernos aún mejor. Tomen su tiempo para responder cada pregunta con honestidad. ¡Adelante!</p>
+            <p id="questionIntro" style="text-align: center;">¡EVENTO ESPECIAL! Como parte de nuestra aventura, hoy nos sumergiremos en este desafío para conocernos aún mejor. Tomen su tiempo para responder cada pregunta con honestidad. ¡Adelante!</p>
             <div id="questionBox" class="question-box"></div>
             <div class="controls">
                 <button id="nextBtn">Comenzar</button>
             </div>
         </div>
         <div id="timerSection" style="display: none; text-align: center;">
-            <p id="timerInstructions">Ahora, mirense a los ojos por 4 minutos. Por favor, usen un temporizador aparte. ¡Este es su momento!</p>
+            <p id="timerInstructions">Ahora, mirense a los ojos por 4 minutos. Por favor, usen un temporizador aparte.</p>
             <button id="timerContinueBtn">Listo, ¡Continuar!</button>
         </div>
         <div id="final-sequence" style="display: none;">
@@ -535,7 +538,7 @@
             finalMessage.textContent = 'Ahora tienes que abrir esta nota.';
             confirmation.style.display = 'block';
             confirmYesBtn.textContent = 'Sí';
-            confirmationStep = 0; // Reiniciar el contador para la nueva secuencia
+            confirmationStep = 0;
         }
 
         function startLanguageProposal() {
