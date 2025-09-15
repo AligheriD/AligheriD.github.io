@@ -1,3 +1,4 @@
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -12,17 +13,39 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
             text-align: center;
+            background: #f0f0f0;
+            background-image: url('https://images.unsplash.com/photo-1518090710609-b4ed47517c2f?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Capa oscura para que el texto sea legible */
+            z-index: -1;
         }
 
         h1 {
-            color: #333;
+            color: #fff;
             margin-bottom: 30px;
             font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .instructions {
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
         }
 
         .game-container {
@@ -48,7 +71,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s ease-in-out;
         }
 
@@ -77,7 +100,7 @@
             align-items: center;
             color: white;
             font-size: 1.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             transition: opacity 0.5s ease-in-out;
         }
 
@@ -93,12 +116,6 @@
             text-align: center;
         }
 
-        .instructions {
-            margin-top: 20px;
-            font-size: 1.1em;
-            color: #666;
-        }
-
         .winner-message {
             margin-top: 30px;
             font-size: 2em;
@@ -106,6 +123,7 @@
             font-weight: bold;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            text-shadow: 1px 1px 2px #000;
         }
 
         .winner-message.show {
@@ -127,21 +145,24 @@
             text-align: left;
             padding: 20px;
             max-width: 800px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
         }
-        
+
         .special-event.show {
-            display: block;
+            opacity: 1;
+            transform: scale(1);
         }
 
         .question-box {
             text-align: center;
             font-size: 1.4em;
             margin-bottom: 20px;
-            min-height: 80px; /* Para evitar que la caja salte al cambiar de pregunta */
+            min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -173,10 +194,68 @@
             color: #d32f2f;
             margin-top: 20px;
             display: none;
+            text-shadow: 1px 1px 2px #000;
+        }
+        
+        #finalMessage {
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            color: #d32f2f;
+            margin-top: 40px;
+            display: none;
+            text-shadow: 2px 2px 4px #000;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .confirmation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .confirmation-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .confirmation-buttons button:hover {
+            background-color: #45a049;
+        }
+        
+        /* Efectos de decoración */
+        .butterfly, .dandelion {
+            position: absolute;
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: float 20s infinite linear;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .butterfly-1 { top: 10%; left: 5%; animation-duration: 22s; }
+        .butterfly-2 { top: 40%; right: 10%; animation-duration: 25s; }
+        .dandelion-1 { bottom: 15%; left: 20%; animation-duration: 28s; }
+        .dandelion-2 { bottom: 30%; right: 25%; animation-duration: 30s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-20px) rotate(5deg); opacity: 1; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
         }
     </style>
 </head>
 <body>
+    <div class="butterfly butterfly-1">🦋</div>
+    <div class="butterfly butterfly-2">🦋</div>
+    <div class="dandelion dandelion-1">🌼</div>
+    <div class="dandelion dandelion-2">🌼</div>
+    
     <h1>¿A Dónde Vamos Hoy? ¡Raspa una Tarjeta!</h1>
     <p class="instructions">¡Haga clic, señorita Mairyn, en una de las tarjetas para descubrir nuestra aventura de hoy!</p>
 
@@ -201,14 +280,27 @@
 
     <div class="special-event" id="specialEvent">
         <div id="questionContainer">
-            <h2 id="questionTitle">Desafío de las 36 Preguntas</h2>
+            <h2 id="questionTitle" style="text-align: center; color: #d32f2f;">Desafío de las 36 Preguntas</h2>
+            <p id="questionIntro" style="text-align: center;">¡Felicidades! Como parte de nuestra aventura, hoy nos sumergiremos en este desafío para conocernos aún mejor. Tomen su tiempo para responder cada pregunta con honestidad. ¡Adelante!</p>
             <div id="questionBox" class="question-box"></div>
             <div class="controls">
                 <button id="nextBtn">Comenzar</button>
             </div>
         </div>
         <div id="timerDisplay"></div>
-        <p id="finalMessage" style="display: none; font-size: 2.5em; font-weight: bold; color: #d32f2f; margin-top: 40px;"></p>
+        <div id="final-sequence" style="display: none;">
+            <p id="finalMessage" style="font-size: 2em; color: #d32f2f; margin-top: 40px; text-shadow: 1px 1px 2px #000;"></p>
+            <div id="confirmation" style="display: none;">
+                <p style="font-size: 1.5em; color: #333;">¿Segura que lo quieres abrir?</p>
+                <div class="confirmation-buttons">
+                    <button id="confirmYes">Sí</button>
+                    <button id="confirmNo" style="display: none;">No</button>
+                </div>
+                <div id="finalProposal" style="display: none; text-align: center; margin-top: 40px;">
+                    <p style="font-size: 3em; font-weight: bold; color: #d32f2f; text-shadow: 2px 2px 4px #000;">¿Quieres ser mi novia?</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -216,10 +308,16 @@
         const disabledCard = document.getElementById('card3');
         const winnerMsg = document.getElementById('winnerMsg');
         const specialEvent = document.getElementById('specialEvent');
+        const questionContainer = document.getElementById('questionContainer');
         const questionBox = document.getElementById('questionBox');
         const nextBtn = document.getElementById('nextBtn');
         const timerDisplay = document.getElementById('timerDisplay');
+        const finalSequence = document.getElementById('final-sequence');
         const finalMessage = document.getElementById('finalMessage');
+        const confirmation = document.getElementById('confirmation');
+        const confirmYesBtn = document.getElementById('confirmYes');
+        const confirmNoBtn = document.getElementById('confirmNo');
+        const finalProposal = document.getElementById('finalProposal');
 
         const questions = [
             'Suponiendo que pudiera elegir a cualquier persona del mundo, ¿a quién le gustaría invitar a cenar?',
@@ -279,8 +377,11 @@
                     card.style.pointerEvents = 'none';
                     
                     setTimeout(() => {
-                        specialEvent.classList.add('show');
-                        questionBox.textContent = `¡Están listos! Presionen "Comenzar" para iniciar el desafío.`;
+                        specialEvent.style.display = 'block';
+                        setTimeout(() => {
+                            specialEvent.classList.add('show');
+                            questionBox.textContent = `¡Están listos! Presionen "Comenzar" para iniciar el desafío.`;
+                        }, 50); // Pequeño retraso para la transición
                     }, 1000);
                 }
             });
@@ -288,44 +389,44 @@
 
         nextBtn.addEventListener('click', () => {
             if (currentQuestion < questions.length) {
-                questionBox.textContent = `${currentQuestion + 1}. ${questions[currentQuestion]}`;
+                questionBox.innerHTML = `<span>${currentQuestion + 1}.</span> ${questions[currentQuestion]}`;
                 currentQuestion++;
                 nextBtn.textContent = 'Siguiente';
                 if (currentQuestion === questions.length) {
                     nextBtn.textContent = '¡Mirada de 4 minutos!';
                 }
             } else {
-                startFinalTimer();
+                startFinalSequence();
             }
         });
 
         disabledCard.addEventListener('click', () => {
             alert('¡Ups! Ya hemos ido a esta aventura. Por favor, elige otra tarjeta.');
         });
+        
+        // Lógica de confirmación final
+        confirmYesBtn.addEventListener('click', () => {
+            if (finalMessage.textContent === 'Ahora tienes que abrir esta nota.') {
+                finalMessage.textContent = '¿Segura que lo quieres abrir?';
+                confirmNoBtn.style.display = 'inline-block';
+            } else if (finalMessage.textContent === '¿Segura que lo quieres abrir?') {
+                finalMessage.textContent = '¡Muy segura!';
+                confirmation.style.display = 'none';
+                setTimeout(() => {
+                    finalProposal.style.display = 'block';
+                }, 1000);
+            }
+        });
 
-        function startFinalTimer() {
-            document.getElementById('questionContainer').style.display = 'none';
-            timerDisplay.style.display = 'block';
-            timerDisplay.textContent = 'Ahora, mirense a los ojos por 4 minutos.';
-
-            let timeInSeconds = 4 * 60;
-            const timerInterval = setInterval(() => {
-                const minutes = Math.floor(timeInSeconds / 60);
-                const seconds = timeInSeconds % 60;
-                timerDisplay.textContent = `Tiempo restante: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-                if (timeInSeconds <= 0) {
-                    clearInterval(timerInterval);
-                    timerDisplay.style.display = 'none';
-                    showProposal();
-                }
-                timeInSeconds--;
-            }, 1000);
-        }
-
-        function showProposal() {
+        function startFinalSequence() {
+            questionContainer.style.display = 'none';
+            finalSequence.style.display = 'block';
             finalMessage.style.display = 'block';
-            finalMessage.textContent = '¿Quieres ser mi novia?';
+            finalMessage.textContent = 'Ahora tienes que abrir esta nota.';
+            
+            setTimeout(() => {
+                confirmation.style.display = 'block';
+            }, 1000);
         }
     </script>
 </body>
