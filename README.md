@@ -16,7 +16,6 @@
             padding: 20px;
             box-sizing: border-box;
             text-align: center;
-            background: #f0f0f0;
             background-image: url('https://static.videezy.com/system/resources/thumbnails/000/039/986/original/17_024_03.jpg'); 
             background-size: cover;
             background-position: center;
@@ -118,7 +117,7 @@
         .winner-message {
             margin-top: 30px;
             font-size: 2em;
-            color: #4CAF50; /* Cambiado a un color más festivo */
+            color: #f0f0f0;
             font-weight: bold;
             opacity: 0;
             transition: opacity 1s ease-in-out;
@@ -139,7 +138,64 @@
             z-index: 10;
         }
 
-        /* Efectos de decoración */
+        /* --- ESTILOS PARA EL MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: scale(0.8);
+            transition: transform 0.4s ease-in-out;
+            max-width: 500px;
+            color: #333;
+        }
+        
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-content h2 {
+            color: #4CAF50;
+            font-size: 2em;
+            margin-top: 0;
+        }
+
+        .modal-content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .modal-content img {
+            max-width: 100px; /* Tamaño del perrito */
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        /* --- FIN DE ESTILOS PARA EL MODAL --- */
+        
         .butterfly {
             position: absolute;
             font-size: 3em;
@@ -152,43 +208,20 @@
         }
         .butterfly-1 { top: 5%; left: 5%; animation-duration: 22s; }
         .butterfly-2 { top: 5%; right: 5%; animation-duration: 25s; }
-        .butterfly-3 { bottom: 5%; left: 5%; animation-duration: 18s; transform: scale(0.8); }
-        .butterfly-4 { bottom: 5%; right: 5%; animation-duration: 23s; transform: scale(0.9); }
 
         @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-            50% { transform: translateY(-30px) rotate(8deg); opacity: 1; }
-            100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            .scratch-card {
-                width: 200px;
-                height: 120px;
-            }
-            .option-text {
-                font-size: 1.2em;
-            }
-            .overlay {
-                font-size: 1.2em;
-            }
-            .winner-message {
-                font-size: 1.5em;
-            }
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(8deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
     </style>
 </head>
 <body>
     <div class="butterfly butterfly-1">🦋</div>
     <div class="butterfly butterfly-2">🦋</div>
-    <div class="butterfly butterfly-3">🦋</div>
-    <div class="butterfly butterfly-4">🦋</div>
     
     <h1>¿A Dónde Vamos Hoy?</h1>
-    <p class="instructions">¡Haga clic, señorita Mairyn, en la tarjeta restante para descubrir nuestra aventura de hoy!</p>
+    <p class="instructions">¡Haga clic, señorita Mairyn, en la tarjeta restante!</p>
 
     <div class="game-container">
         <div class="scratch-card disabled" id="card1">
@@ -209,53 +242,71 @@
 
     <p class="winner-message" id="winnerMsg"></p>
 
+    <div id="finalModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>¡Felicidades! 🥳</h2>
+            <p>Has completado todas las aventuras disponibles hasta ahora.</p>
+            <p><strong>Estamos construyendo nuevas sorpresas para ti. ¡Mantente al tanto!</strong></p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWH_7B0xO5ZgdvJSlsSN0-va01kYZglZYZ1w&s" alt="Perrito tierno">
+        </div>
+    </div>
     <script>
-        const cards = document.querySelectorAll('.scratch-card:not(.disabled)');
-        const winnerMsg = document.getElementById('winnerMsg');
-        let completedCards = 0;
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectableCards = document.querySelectorAll('.scratch-card:not(.disabled)');
+            const allCards = document.querySelectorAll('.scratch-card');
+            const winnerMsg = document.getElementById('winnerMsg');
+            const finalModal = document.getElementById('finalModal');
+            let completedCards = 0;
 
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                // Si la tarjeta ya fue revelada, no hagas nada
-                if (card.classList.contains('revealed')) {
-                    return;
-                }
+            function showFinalPopup() {
+                // Asegurarse de que todas las tarjetas se vean completadas
+                allCards.forEach(c => {
+                    if (!c.classList.contains('disabled')) {
+                        c.classList.add('disabled');
+                    }
+                    if (!c.querySelector('.check-icon')) {
+                         const checkIcon = document.createElement('i');
+                         checkIcon.className = 'fas fa-check-circle check-icon';
+                         c.appendChild(checkIcon);
+                    }
+                });
+                winnerMsg.classList.remove('show'); // Ocultar mensaje intermedio
+                finalModal.classList.add('show'); // Mostrar el modal
+            }
+            
+            // Revisar localStorage al cargar la página
+            if (localStorage.getItem('allAdventuresCompleted') === 'true') {
+                showFinalPopup();
+            }
 
-                // Revelar la tarjeta
-                card.classList.add('revealed');
-                
-                const optionChosen = card.querySelector('.option-text').textContent;
-                
-                // Mostrar mensaje de la opción elegida
-                winnerMsg.textContent = `¡Excelente elección! Hoy iremos a: ${optionChosen}`;
-                winnerMsg.classList.add('show');
-                
-                // Deshabilitar la tarjeta y agregar la palomita
-                card.classList.add('disabled');
-                card.style.pointerEvents = 'none';
-                const checkIcon = document.createElement('i');
-                checkIcon.className = 'fas fa-check-circle check-icon';
-                card.appendChild(checkIcon);
-                
-                completedCards++;
+            selectableCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    if (card.classList.contains('revealed')) return;
 
-                // Verificar si ya se completaron todas las tarjetas
-                if (completedCards === cards.length) {
-                    setTimeout(() => {
-                        // Mensaje final y más bonito :)
-                        winnerMsg.textContent = "¡Felicidades por completar todas las aventuras! 🥳 Estamos preparando nuevas sorpresas para ti. ¡Mantente al tanto!";
-                    }, 2500); // Muestra el mensaje final después de 2.5 segundos
-                }
+                    card.classList.add('revealed');
+                    
+                    const optionChosen = card.querySelector('.option-text').textContent;
+                    winnerMsg.textContent = `¡Excelente elección! Hoy iremos a: ${optionChosen}`;
+                    winnerMsg.classList.add('show');
+                    
+                    card.classList.add('disabled');
+                    card.style.pointerEvents = 'none';
+                    const checkIcon = document.createElement('i');
+                    checkIcon.className = 'fas fa-check-circle check-icon';
+                    card.appendChild(checkIcon);
+                    
+                    completedCards++;
+
+                    // Si ya se completaron todas las tarjetas seleccionables
+                    if (completedCards === selectableCards.length) {
+                         setTimeout(() => {
+                            localStorage.setItem('allAdventuresCompleted', 'true');
+                            showFinalPopup();
+                        }, 2000); 
+                    }
+                });
             });
         });
-        
-        // Mensaje para las tarjetas ya deshabilitadas
-        document.querySelectorAll('.scratch-card.disabled').forEach(disabledCard => {
-            disabledCard.addEventListener('click', () => {
-                alert('¡Ups! Ya hemos ido a esta aventura. Por favor, elige otra tarjeta.');
-            });
-        });
-
     </script>
 </body>
 </html>
