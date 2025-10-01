@@ -302,7 +302,7 @@
                          setTimeout(() => {
                             localStorage.setItem('allAdventuresCompleted', 'true');
                             showFinalPopup();
-                        }, 2000); 
+                        }, 4000); // <-- TIEMPO CAMBIADO AQUÍ a 4 segundos
                     }
                 });
             });
